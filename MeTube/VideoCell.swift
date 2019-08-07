@@ -12,7 +12,7 @@ class VideoCell: UICollectionViewCell {
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .blue
+        imageView.image = UIImage(named: "taylor-swift-blank-space-thumbnail")
         return imageView
     }()
     

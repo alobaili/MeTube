@@ -16,6 +16,7 @@ class HomeController: UICollectionViewController {
         navigationItem.title = "Home"
         
         navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barStyle = .black
         
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
         titleLabel.text = "Home"

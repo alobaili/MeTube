@@ -26,6 +26,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().barTintColor = UIColor(red: 230/255, green: 32/255, blue: 31/255, alpha: 1)
         
+        let statusBarBackgroundView = UIView()
+        statusBarBackgroundView.backgroundColor = UIColor(red: 194/255, green: 31/255, blue: 31/255, alpha: 1)
+        window?.addSubview(statusBarBackgroundView)
+        statusBarBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            statusBarBackgroundView.topAnchor.constraint(equalTo: window!.topAnchor),
+            statusBarBackgroundView.leadingAnchor.constraint(equalTo: window!.leadingAnchor),
+            statusBarBackgroundView.trailingAnchor.constraint(equalTo: window!.trailingAnchor),
+            statusBarBackgroundView.bottomAnchor.constraint(equalTo: window!.safeAreaLayoutGuide.topAnchor)
+        ])
+        
         return true
     }
 

@@ -97,9 +97,10 @@
 		4BB1480422FAF6ED000B4577 /* MeTube */ = {
 			isa = PBXGroup;
 			children = (
+				4BB1483B22FB8828000B4577 /* Controller */,
+				4BB1483A22FB8823000B4577 /* View */,
+				4BB1483922FB881B000B4577 /* Model */,
 				4BB1480522FAF6ED000B4577 /* AppDelegate.swift */,
-				4BB1480722FAF6ED000B4577 /* HomeController.swift */,
-				4BB1483322FAFD1F000B4577 /* VideoCell.swift */,
 				4BB1480C22FAF6EE000B4577 /* Assets.xcassets */,
 				4BB1480E22FAF6EE000B4577 /* LaunchScreen.storyboard */,
 				4BB1481122FAF6EE000B4577 /* Info.plist */,
@@ -123,6 +124,29 @@
 				4BB1482722FAF6EE000B4577 /* Info.plist */,
 			);
 			path = MeTubeUITests;
+			sourceTree = "<group>";
+		};
+		4BB1483922FB881B000B4577 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4BB1483A22FB8823000B4577 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4BB1483322FAFD1F000B4577 /* VideoCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4BB1483B22FB8828000B4577 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4BB1480722FAF6ED000B4577 /* HomeController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

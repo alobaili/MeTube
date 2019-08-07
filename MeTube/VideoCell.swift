@@ -16,6 +16,27 @@ class VideoCell: UICollectionViewCell {
         return imageView
     }()
     
+    let userProfileImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.backgroundColor = .green
+        return imageView
+    }()
+    
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .purple
+        return label
+    }()
+    
+    let subtitleTextView: UITextView = {
+        let textView = UITextView()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.backgroundColor = .red
+        return textView
+    }()
+    
     let separatorView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -34,14 +55,38 @@ class VideoCell: UICollectionViewCell {
     
     func setupViews() {
         addSubview(thumbnailImageView)
+        addSubview(userProfileImageView)
+        addSubview(titleLabel)
+        addSubview(subtitleTextView)
         addSubview(separatorView)
         
         NSLayoutConstraint.activate([
             thumbnailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             thumbnailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            thumbnailImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            thumbnailImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+            thumbnailImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16)
         ])
+        
+        NSLayoutConstraint.activate([
+            userProfileImageView.heightAnchor.constraint(equalToConstant: 44),
+            userProfileImageView.widthAnchor.constraint(equalToConstant: 44),
+            userProfileImageView.leadingAnchor.constraint(equalTo: thumbnailImageView.leadingAnchor),
+            userProfileImageView.topAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor, constant: 8),
+            userProfileImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+        ])
+        
+        NSLayoutConstraint.activate([
+            titleLabel.heightAnchor.constraint(equalToConstant: 20),
+            titleLabel.leadingAnchor.constraint(equalTo: userProfileImageView.trailingAnchor, constant: 8),
+            titleLabel.trailingAnchor.constraint(equalTo: thumbnailImageView.trailingAnchor),
+            titleLabel.topAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor, constant: 8)
+        ])
+        
+        NSLayoutConstraint.activate([
+            subtitleTextView.heightAnchor.constraint(equalToConstant: 20),
+            subtitleTextView.leadingAnchor.constraint(equalTo: userProfileImageView.trailingAnchor, constant: 8),
+            subtitleTextView.trailingAnchor.constraint(equalTo: thumbnailImageView.trailingAnchor),
+            subtitleTextView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8)
+            ])
         
         NSLayoutConstraint.activate([
             separatorView.heightAnchor.constraint(equalToConstant: 1),

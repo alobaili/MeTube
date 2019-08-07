@@ -15,8 +15,25 @@ class HomeController: UICollectionViewController {
         
         navigationItem.title = "Home"
         collectionView.backgroundColor = .white
+        
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellID")
     }
 
 
 }
 
+// MARK: - UICollectionViewDelegate
+extension HomeController {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension HomeController {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath)
+        cell.backgroundColor = .red
+        return cell
+    }
+}

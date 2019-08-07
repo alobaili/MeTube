@@ -13,34 +13,40 @@ class VideoCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "taylor-swift-blank-space-thumbnail")
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     
     let userProfileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .green
+        imageView.image = UIImage(named: "taylor-swift-profile-image")
+        imageView.layer.cornerRadius = 22
+        imageView.clipsToBounds = true
         return imageView
     }()
     
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .purple
+        label.text = "Taylot Swift - Blank Space"
         return label
     }()
     
     let subtitleTextView: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.backgroundColor = .red
+        textView.text = "TaylorSwiftVEVO • 1,604,684,607 views • 2 years ago"
+        textView.textContainerInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
+        textView.textColor = .lightGray
         return textView
     }()
     
     let separatorView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .black
+        view.backgroundColor = UIColor(white: 0.9, alpha: 1)
         return view
     }()
     
@@ -82,11 +88,11 @@ class VideoCell: UICollectionViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            subtitleTextView.heightAnchor.constraint(equalToConstant: 20),
+            subtitleTextView.heightAnchor.constraint(equalToConstant: 30),
             subtitleTextView.leadingAnchor.constraint(equalTo: userProfileImageView.trailingAnchor, constant: 8),
             subtitleTextView.trailingAnchor.constraint(equalTo: thumbnailImageView.trailingAnchor),
-            subtitleTextView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8)
-            ])
+            subtitleTextView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4)
+        ])
         
         NSLayoutConstraint.activate([
             separatorView.heightAnchor.constraint(equalToConstant: 1),

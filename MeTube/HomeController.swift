@@ -14,6 +14,15 @@ class HomeController: UICollectionViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Home"
+        
+        navigationController?.navigationBar.isTranslucent = false
+        
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
+        titleLabel.text = "Home"
+        titleLabel.textColor = .white
+        titleLabel.font = .systemFont(ofSize: 20)
+        navigationItem.titleView = titleLabel
+        
         collectionView.backgroundColor = .white
         
         collectionView.register(VideoCell.self, forCellWithReuseIdentifier: "cellID")
@@ -41,7 +50,8 @@ extension HomeController {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension HomeController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 200)
+        let height = (view.frame.width - 16 - 16) * 9 / 16
+        return CGSize(width: view.frame.width, height: height + 16 + 68)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

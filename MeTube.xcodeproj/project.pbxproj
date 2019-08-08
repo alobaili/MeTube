@@ -15,6 +15,8 @@
 		4BB1482622FAF6EE000B4577 /* MeTubeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1482522FAF6EE000B4577 /* MeTubeUITests.swift */; };
 		4BB1483422FAFD1F000B4577 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1483322FAFD1F000B4577 /* VideoCell.swift */; };
 		4BB1483D22FC1D44000B4577 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1483C22FC1D44000B4577 /* MenuBar.swift */; };
+		4BB1484122FC336A000B4577 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1484022FC336A000B4577 /* MenuCell.swift */; };
+		4BB1484322FC3411000B4577 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1484222FC3411000B4577 /* BaseCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		4BB1482722FAF6EE000B4577 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BB1483322FAFD1F000B4577 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		4BB1483C22FC1D44000B4577 /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
+		4BB1484022FC336A000B4577 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		4BB1484222FC3411000B4577 /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +144,8 @@
 			children = (
 				4BB1483322FAFD1F000B4577 /* VideoCell.swift */,
 				4BB1483C22FC1D44000B4577 /* MenuBar.swift */,
+				4BB1484022FC336A000B4577 /* MenuCell.swift */,
+				4BB1484222FC3411000B4577 /* BaseCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -283,8 +289,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BB1480822FAF6ED000B4577 /* HomeController.swift in Sources */,
+				4BB1484122FC336A000B4577 /* MenuCell.swift in Sources */,
 				4BB1480622FAF6ED000B4577 /* AppDelegate.swift in Sources */,
 				4BB1483D22FC1D44000B4577 /* MenuBar.swift in Sources */,
+				4BB1484322FC3411000B4577 /* BaseCell.swift in Sources */,
 				4BB1483422FAFD1F000B4577 /* VideoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

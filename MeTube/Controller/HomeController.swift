@@ -34,6 +34,9 @@ class HomeController: UICollectionViewController {
         
         collectionView.register(VideoCell.self, forCellWithReuseIdentifier: "cellID")
         
+        collectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
+        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
+        
         setupMenuBar()
     }
     
@@ -41,7 +44,7 @@ class HomeController: UICollectionViewController {
         view.addSubview(menuBar)
         
         NSLayoutConstraint.activate([
-            menuBar.heightAnchor.constraint(equalToConstant: 55),
+            menuBar.heightAnchor.constraint(equalToConstant: 50),
             menuBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             menuBar.topAnchor.constraint(equalTo: view.topAnchor),
             menuBar.trailingAnchor.constraint(equalTo: view.trailingAnchor)

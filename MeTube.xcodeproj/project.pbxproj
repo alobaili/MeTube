@@ -18,6 +18,7 @@
 		4BB1484122FC336A000B4577 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1484022FC336A000B4577 /* MenuCell.swift */; };
 		4BB1484322FC3411000B4577 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1484222FC3411000B4577 /* BaseCell.swift */; };
 		4BB1484522FC423B000B4577 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1484422FC423B000B4577 /* Video.swift */; };
+		4BB1484722FC8C72000B4577 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1484622FC8C72000B4577 /* Channel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		4BB1484022FC336A000B4577 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		4BB1484222FC3411000B4577 /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		4BB1484422FC423B000B4577 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		4BB1484622FC8C72000B4577 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				4BB1484422FC423B000B4577 /* Video.swift */,
+				4BB1484622FC8C72000B4577 /* Channel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BB1480822FAF6ED000B4577 /* HomeController.swift in Sources */,
+				4BB1484722FC8C72000B4577 /* Channel.swift in Sources */,
 				4BB1484122FC336A000B4577 /* MenuCell.swift in Sources */,
 				4BB1480622FAF6ED000B4577 /* AppDelegate.swift in Sources */,
 				4BB1483D22FC1D44000B4577 /* MenuBar.swift in Sources */,

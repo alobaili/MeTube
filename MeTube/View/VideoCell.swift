@@ -9,7 +9,33 @@
 import UIKit
 
 class VideoCell: BaseCell {
-    var video: Video?
+    var video: Video? {
+        didSet {
+            titleLabel.text = video?.title
+            if let thumbnailImageName = video?.thumbnailImageName {
+                thumbnailImageView.image = UIImage(named: thumbnailImageName)
+            }
+            if let profileImageName = video?.channel?.profileImageName {
+                userProfileImageView.image = UIImage(named: profileImageName)
+            }
+            
+            if let channelName = video?.channel?.name, let numberOfViews = video?.numberOfViews {
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                let subtitleText = "\(channelName) • \(numberFormatter.string(from: NSNumber(value: numberOfViews))!) • 2 years ago"
+                subtitleTextView.text = subtitleText
+            }
+            
+            // measure the title text
+            if let title = video?.title {
+                let size = CGSize(width: frame.width - 16 - 44 - 8 - 16, height: 1000)
+                let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+                let estimatedRect = NSString(string: title).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14)], context: nil)
+                
+                titleLabelHeightConstraint?.constant = estimatedRect.size.height > 20 ? 44 : 20
+            }
+        }
+    }
     
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
@@ -32,6 +58,7 @@ class VideoCell: BaseCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 2
         label.text = "Taylot Swift - Blank Space"
         return label
     }()
@@ -51,6 +78,8 @@ class VideoCell: BaseCell {
         view.backgroundColor = UIColor(white: 0.9, alpha: 1)
         return view
     }()
+    
+    var titleLabelHeightConstraint: NSLayoutConstraint?
     
     override func setupViews() {
         super.setupViews()
@@ -72,11 +101,12 @@ class VideoCell: BaseCell {
             userProfileImageView.widthAnchor.constraint(equalToConstant: 44),
             userProfileImageView.leadingAnchor.constraint(equalTo: thumbnailImageView.leadingAnchor),
             userProfileImageView.topAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor, constant: 8),
-            userProfileImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+            userProfileImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -36)
         ])
         
+        titleLabelHeightConstraint = titleLabel.heightAnchor.constraint(equalToConstant: 20)
         NSLayoutConstraint.activate([
-            titleLabel.heightAnchor.constraint(equalToConstant: 20),
+            titleLabelHeightConstraint!,
             titleLabel.leadingAnchor.constraint(equalTo: userProfileImageView.trailingAnchor, constant: 8),
             titleLabel.trailingAnchor.constraint(equalTo: thumbnailImageView.trailingAnchor),
             titleLabel.topAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor, constant: 8)

@@ -10,6 +10,8 @@ import UIKit
 
 class MenuBar: UIView {
     
+    let imageNames = ["home", "trending", "subscriptions", "account"]
+    
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -33,6 +35,9 @@ class MenuBar: UIView {
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
+        let selectedIndexPath = IndexPath(item: 0, section: 0)
+        collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: [])
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -50,7 +55,8 @@ extension MenuBar: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! MenuCell
+        cell.imageView.image = UIImage(named: imageNames[indexPath.row])?.withRenderingMode(.alwaysTemplate)
         return cell
     }
     

@@ -12,12 +12,10 @@ class VideoCell: BaseCell {
     var video: Video? {
         didSet {
             titleLabel.text = video?.title
-            if let thumbnailImageName = video?.thumbnailImageName {
-                thumbnailImageView.image = UIImage(named: thumbnailImageName)
-            }
-            if let profileImageName = video?.channel?.profileImageName {
-                userProfileImageView.image = UIImage(named: profileImageName)
-            }
+            
+            setupThumbnailImage()
+            
+            setubProfileOmage()
             
             if let channelName = video?.channel?.name, let numberOfViews = video?.numberOfViews {
                 let numberFormatter = NumberFormatter()
@@ -52,6 +50,7 @@ class VideoCell: BaseCell {
         imageView.image = UIImage(named: "taylor-swift-profile-image")
         imageView.layer.cornerRadius = 22
         imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
@@ -127,5 +126,17 @@ class VideoCell: BaseCell {
         ])
         
         thumbnailImageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+    }
+    
+    func setupThumbnailImage() {
+        if let thumbnailImageURL = video?.thumbnailImageName {
+            thumbnailImageView.loadImageUsingURLString(urlString: thumbnailImageURL)
+        }
+    }
+    
+    func setubProfileOmage() {
+        if let profileImageURL = video?.channel?.profileImageName {
+            userProfileImageView.loadImageUsingURLString(urlString: profileImageURL)
+        }
     }
 }

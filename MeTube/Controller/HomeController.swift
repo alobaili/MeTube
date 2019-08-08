@@ -15,6 +15,13 @@ class HomeController: UICollectionViewController {
         mb.translatesAutoresizingMaskIntoConstraints = false
         return mb
     }()
+    
+    var videos: [Video] = {
+       var blankSpaceVideo = Video()
+        blankSpaceVideo.thumbnailImageName = "taylor-swift-blank-space-thumbnail"
+        blankSpaceVideo.title = "Taylor Swift = Blank Space"
+        return [blankSpaceVideo]
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,14 +82,15 @@ class HomeController: UICollectionViewController {
 // MARK: - UICollectionViewDelegate
 extension HomeController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return videos.count
     }
 }
 
 // MARK: - UICollectionViewDataSource
 extension HomeController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! VideoCell
+        cell.video = videos[indexPath.row]
         
         return cell
     }

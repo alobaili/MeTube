@@ -9,6 +9,12 @@
 import UIKit
 
 class HomeController: UICollectionViewController {
+    
+    let menuBar: MenuBar = {
+        let mb = MenuBar()
+        mb.translatesAutoresizingMaskIntoConstraints = false
+        return mb
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +33,19 @@ class HomeController: UICollectionViewController {
         collectionView.backgroundColor = .white
         
         collectionView.register(VideoCell.self, forCellWithReuseIdentifier: "cellID")
+        
+        setupMenuBar()
+    }
+    
+    private func setupMenuBar() {
+        view.addSubview(menuBar)
+        
+        NSLayoutConstraint.activate([
+            menuBar.heightAnchor.constraint(equalToConstant: 55),
+            menuBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            menuBar.topAnchor.constraint(equalTo: view.topAnchor),
+            menuBar.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
     }
 
 

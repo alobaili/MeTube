@@ -14,6 +14,7 @@
 		4BB1481B22FAF6EE000B4577 /* MeTubeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1481A22FAF6EE000B4577 /* MeTubeTests.swift */; };
 		4BB1482622FAF6EE000B4577 /* MeTubeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1482522FAF6EE000B4577 /* MeTubeUITests.swift */; };
 		4BB1483422FAFD1F000B4577 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1483322FAFD1F000B4577 /* VideoCell.swift */; };
+		4BB1483D22FC1D44000B4577 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1483C22FC1D44000B4577 /* MenuBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		4BB1482522FAF6EE000B4577 /* MeTubeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTubeUITests.swift; sourceTree = "<group>"; };
 		4BB1482722FAF6EE000B4577 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BB1483322FAFD1F000B4577 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		4BB1483C22FC1D44000B4577 /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				4BB1483322FAFD1F000B4577 /* VideoCell.swift */,
+				4BB1483C22FC1D44000B4577 /* MenuBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			files = (
 				4BB1480822FAF6ED000B4577 /* HomeController.swift in Sources */,
 				4BB1480622FAF6ED000B4577 /* AppDelegate.swift in Sources */,
+				4BB1483D22FC1D44000B4577 /* MenuBar.swift in Sources */,
 				4BB1483422FAFD1F000B4577 /* VideoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

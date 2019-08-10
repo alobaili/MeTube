@@ -21,7 +21,6 @@ class SettingCell: BaseCell {
     let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Setting"
         label.font = UIFont.systemFont(ofSize: 15)
         return label
     }()
@@ -29,7 +28,6 @@ class SettingCell: BaseCell {
     let iconImageView: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.image = UIImage(named: "settings")
         iv.contentMode = .scaleAspectFill
         return iv
     }()

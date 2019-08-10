@@ -37,6 +37,7 @@ class HomeController: UICollectionViewController {
 //    }()
     
     var videos: [Video]?
+    let settingsLauncher = SettingsLauncher()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,7 +129,7 @@ class HomeController: UICollectionViewController {
     }
     
     @objc func handleMore() {
-        
+        settingsLauncher.showSettings()
     }
 
 

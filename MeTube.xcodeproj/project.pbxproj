@@ -21,6 +21,8 @@
 		4BB1484722FC8C72000B4577 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1484622FC8C72000B4577 /* Channel.swift */; };
 		4BB1484A22FCB328000B4577 /* UIImageView+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1484922FCB328000B4577 /* UIImageView+Extention.swift */; };
 		4BB1484D22FED0D1000B4577 /* SettingsLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1484C22FED0D1000B4577 /* SettingsLauncher.swift */; };
+		4BB1484F22FEDDB0000B4577 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1484E22FEDDB0000B4577 /* SettingCell.swift */; };
+		4BB1485122FEE58E000B4577 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1485022FEE58E000B4577 /* Setting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		4BB1484622FC8C72000B4577 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		4BB1484922FCB328000B4577 /* UIImageView+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extention.swift"; sourceTree = "<group>"; };
 		4BB1484C22FED0D1000B4577 /* SettingsLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLauncher.swift; sourceTree = "<group>"; };
+		4BB1484E22FEDDB0000B4577 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		4BB1485022FEE58E000B4577 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +151,7 @@
 			children = (
 				4BB1484422FC423B000B4577 /* Video.swift */,
 				4BB1484622FC8C72000B4577 /* Channel.swift */,
+				4BB1485022FEE58E000B4577 /* Setting.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 				4BB1483C22FC1D44000B4577 /* MenuBar.swift */,
 				4BB1484022FC336A000B4577 /* MenuCell.swift */,
 				4BB1484222FC3411000B4577 /* BaseCell.swift */,
+				4BB1484E22FEDDB0000B4577 /* SettingCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -318,8 +324,10 @@
 			files = (
 				4BB1480822FAF6ED000B4577 /* HomeController.swift in Sources */,
 				4BB1484A22FCB328000B4577 /* UIImageView+Extention.swift in Sources */,
+				4BB1485122FEE58E000B4577 /* Setting.swift in Sources */,
 				4BB1484722FC8C72000B4577 /* Channel.swift in Sources */,
 				4BB1484122FC336A000B4577 /* MenuCell.swift in Sources */,
+				4BB1484F22FEDDB0000B4577 /* SettingCell.swift in Sources */,
 				4BB1480622FAF6ED000B4577 /* AppDelegate.swift in Sources */,
 				4BB1483D22FC1D44000B4577 /* MenuBar.swift in Sources */,
 				4BB1484D22FED0D1000B4577 /* SettingsLauncher.swift in Sources */,

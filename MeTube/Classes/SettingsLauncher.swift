@@ -23,14 +23,16 @@ class SettingsLauncher: NSObject {
     
     let cellHeight: CGFloat = 50
     
+    var homeController: HomeController?
+    
     let settings: [Setting] = {
         return [
-            Setting(name: "Settings", imageName: "settings"),
-            Setting(name: "Terms & Privacy Policy", imageName: "privacy"),
-            Setting(name: "Send Feedback", imageName: "feedback"),
-            Setting(name: "Help", imageName: "help"),
-            Setting(name: "Switch Account", imageName: "switch_account"),
-            Setting(name: "Cancel", imageName: "cancel")
+            Setting(name: .settings, imageName: "settings"),
+            Setting(name: .termsAndPrivacyPolicy, imageName: "privacy"),
+            Setting(name: .sendFeedback, imageName: "feedback"),
+            Setting(name: .help, imageName: "help"),
+            Setting(name: .switchAccount, imageName: "switch_account"),
+            Setting(name: .cancel, imageName: "cancel")
         ]
     }()
     
@@ -47,7 +49,7 @@ class SettingsLauncher: NSObject {
         
         if let window = UIApplication.shared.keyWindow {
             
-            blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
+            blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleBlankSpaceTap)))
             blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
             blackView.frame = window.frame
             blackView.alpha = 0
@@ -66,16 +68,26 @@ class SettingsLauncher: NSObject {
         }
     }
     
-    @objc func handleDismiss() {
-        
+    @objc func handleDismiss(setting: Setting?) {
         if let window = UIApplication.shared.keyWindow {
             
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
                 self.blackView.alpha = 0
                 self.collectionView.frame = CGRect(x: 0, y: window.frame.height, width: self.collectionView.frame.width, height: self.collectionView.frame.height)
-            })
+            }) { didComplete in
+                
+                guard let setting = setting else { return }
+                
+                if setting.name != .cancel {
+                    self.homeController?.showController(for: setting)
+                }
+            }
             
         }
+    }
+    
+    @objc func handleBlankSpaceTap() {
+        handleDismiss(setting: nil)
     }
 }
 
@@ -96,7 +108,11 @@ extension SettingsLauncher: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 extension SettingsLauncher: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let setting = self.settings[indexPath.item]
+        handleDismiss(setting: setting)
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout

@@ -23,6 +23,7 @@
 		4BB1484D22FED0D1000B4577 /* SettingsLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1484C22FED0D1000B4577 /* SettingsLauncher.swift */; };
 		4BB1484F22FEDDB0000B4577 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1484E22FEDDB0000B4577 /* SettingCell.swift */; };
 		4BB1485122FEE58E000B4577 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1485022FEE58E000B4577 /* Setting.swift */; };
+		4BB1485422FF09E3000B4577 /* SettingName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1485322FF09E3000B4577 /* SettingName.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		4BB1484C22FED0D1000B4577 /* SettingsLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLauncher.swift; sourceTree = "<group>"; };
 		4BB1484E22FEDDB0000B4577 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		4BB1485022FEE58E000B4577 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		4BB1485322FF09E3000B4577 /* SettingName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingName.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 		4BB1480422FAF6ED000B4577 /* MeTube */ = {
 			isa = PBXGroup;
 			children = (
+				4BB1485222FF09C9000B4577 /* Enums */,
 				4BB1484B22FED0B5000B4577 /* Classes */,
 				4BB1484822FCB30A000B4577 /* Helper */,
 				4BB1483B22FB8828000B4577 /* Controller */,
@@ -190,6 +193,14 @@
 				4BB1484C22FED0D1000B4577 /* SettingsLauncher.swift */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		4BB1485222FF09C9000B4577 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				4BB1485322FF09E3000B4577 /* SettingName.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,6 +340,7 @@
 				4BB1484122FC336A000B4577 /* MenuCell.swift in Sources */,
 				4BB1484F22FEDDB0000B4577 /* SettingCell.swift in Sources */,
 				4BB1480622FAF6ED000B4577 /* AppDelegate.swift in Sources */,
+				4BB1485422FF09E3000B4577 /* SettingName.swift in Sources */,
 				4BB1483D22FC1D44000B4577 /* MenuBar.swift in Sources */,
 				4BB1484D22FED0D1000B4577 /* SettingsLauncher.swift in Sources */,
 				4BB1484322FC3411000B4577 /* BaseCell.swift in Sources */,

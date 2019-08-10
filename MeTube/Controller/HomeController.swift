@@ -37,7 +37,11 @@ class HomeController: UICollectionViewController {
 //    }()
     
     var videos: [Video]?
-    let settingsLauncher = SettingsLauncher()
+    lazy var settingsLauncher: SettingsLauncher = {
+        let launcher = SettingsLauncher()
+        launcher.homeController = self
+        return launcher
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,6 +134,14 @@ class HomeController: UICollectionViewController {
     
     @objc func handleMore() {
         settingsLauncher.showSettings()
+    }
+    
+    func showController(for setting: Setting) {
+        let dummySettingsViewController = UIViewController()
+        dummySettingsViewController.view.backgroundColor = .white
+        dummySettingsViewController.navigationItem.title = setting.name.rawValue
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.pushViewController(dummySettingsViewController, animated: true)
     }
 
 

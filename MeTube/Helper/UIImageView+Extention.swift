@@ -13,6 +13,10 @@ let imageCache = NSCache<AnyObject, AnyObject>()
 class CustomImageView: UIImageView {
     var imageURLString: String?
     
+    /// Loads an image from a url string and sets it as the image for the `UIImageView`.
+    ///
+    /// When this function is first called, it checks if the image is already saved in the image cache. If it is, it assign's it as the `UIImageView`'s image. Otherwise, a `URLSession` data task is created using the shared session and the image is fetched from this data task. The fetched image is then assigned as the `UIImageView`s image and saved in the image cache.
+    /// - Parameter urlString: A string representing the URL of the image to be loaded.
     func loadImageUsingURLString(urlString: String) {
         imageURLString = urlString
         

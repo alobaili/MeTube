@@ -24,6 +24,7 @@
 		4BB1484F22FEDDB0000B4577 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1484E22FEDDB0000B4577 /* SettingCell.swift */; };
 		4BB1485122FEE58E000B4577 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1485022FEE58E000B4577 /* Setting.swift */; };
 		4BB1485422FF09E3000B4577 /* SettingName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1485322FF09E3000B4577 /* SettingName.swift */; };
+		4BB1485723016D9B000B4577 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1485623016D9B000B4577 /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		4BB1484E22FEDDB0000B4577 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		4BB1485022FEE58E000B4577 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		4BB1485322FF09E3000B4577 /* SettingName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingName.swift; sourceTree = "<group>"; };
+		4BB1485623016D9B000B4577 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 		4BB1480422FAF6ED000B4577 /* MeTube */ = {
 			isa = PBXGroup;
 			children = (
+				4BB1485523016D6C000B4577 /* API */,
 				4BB1485222FF09C9000B4577 /* Enums */,
 				4BB1484B22FED0B5000B4577 /* Classes */,
 				4BB1484822FCB30A000B4577 /* Helper */,
@@ -201,6 +204,14 @@
 				4BB1485322FF09E3000B4577 /* SettingName.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		4BB1485523016D6C000B4577 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				4BB1485623016D9B000B4577 /* API.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,6 +350,7 @@
 				4BB1484722FC8C72000B4577 /* Channel.swift in Sources */,
 				4BB1484122FC336A000B4577 /* MenuCell.swift in Sources */,
 				4BB1484F22FEDDB0000B4577 /* SettingCell.swift in Sources */,
+				4BB1485723016D9B000B4577 /* API.swift in Sources */,
 				4BB1480622FAF6ED000B4577 /* AppDelegate.swift in Sources */,
 				4BB1485422FF09E3000B4577 /* SettingName.swift in Sources */,
 				4BB1483D22FC1D44000B4577 /* MenuBar.swift in Sources */,

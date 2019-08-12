@@ -53,41 +53,17 @@ class HomeController: UICollectionViewController {
     }
     
     private func fetchVideos() {
-        let url = URL(string: "https://s3-us-west-2.amazonaws.com/youtubeassets/home.json")
-        URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            guard let data = data else {
-                print(error!)
-                return
-            }
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [[String : Any]]
-                
-                self.videos = [Video]()
-                
-                json.forEach({ (dictionary) in
-                    var video = Video()
-                    video.title = dictionary["title"] as? String
-                    video.thumbnailImageName = dictionary["thumbnail_image_name"] as? String
-                    
-                    let channelDictionary = dictionary["channel"] as! [String : Any]
-                    
-                    var channel = Channel()
-                    channel.name = channelDictionary["name"] as? String
-                    channel.profileImageName = channelDictionary["profile_image_name"] as? String
-                    video.channel = channel
-                    
-                    self.videos?.append(video)
-                })
-                
+        API.shared.fetchVideos { (result) in
+            switch result {
+            case .success(let videos):
+                self.videos = videos
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
-                
-            } catch {
+            case .failure(let error):
                 print(error)
             }
-            
-        }.resume()
+        }
     }
     
     private func setupMenuBar() {

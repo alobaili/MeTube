@@ -16,26 +16,6 @@ class HomeController: UICollectionViewController {
         return mb
     }()
     
-//    var videos: [Video] = {
-//        var kanyeChannel = Channel()
-//        kanyeChannel.name = "KanyeIsTheBestChannel"
-//        kanyeChannel.profileImageName = "kanye_profile"
-//
-//        var blankSpaceVideo = Video()
-//        blankSpaceVideo.thumbnailImageName = "taylor-swift-blank-space-thumbnail"
-//        blankSpaceVideo.title = "Taylor Swift - Blank Space"
-//        blankSpaceVideo.channel = kanyeChannel
-//        blankSpaceVideo.numberOfViews = 93123503485
-//
-//        var badBloodVideo = Video()
-//        badBloodVideo.thumbnailImageName = "taylor_swift_bad_blood"
-//        badBloodVideo.title = "Taylor Swift - Bad Blood (feat. Kendrick Lamar)"
-//        badBloodVideo.channel = kanyeChannel
-//        badBloodVideo.numberOfViews = 23334432893
-//
-//        return [blankSpaceVideo, badBloodVideo]
-//    }()
-    
     var videos: [Video]?
     lazy var settingsLauncher: SettingsLauncher = {
         let launcher = SettingsLauncher()

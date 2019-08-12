@@ -10,6 +10,10 @@ import UIKit
 
 class HomeController: UICollectionViewController {
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     let menuBar: MenuBar = {
         let mb = MenuBar()
         mb.translatesAutoresizingMaskIntoConstraints = false

@@ -22,6 +22,8 @@ class MenuBar: UIView {
         return cv
     }()
     
+    var horizontalBarLeadingAnchorConstraint: NSLayoutConstraint?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -38,15 +40,40 @@ class MenuBar: UIView {
         let selectedIndexPath = IndexPath(item: 0, section: 0)
         collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: [])
         
+        setupHorizontalBar()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func setupHorizontalBar() {
+        let horizontalBarView = UIView()
+        horizontalBarView.translatesAutoresizingMaskIntoConstraints = false
+        horizontalBarView.backgroundColor = UIColor(white: 0.95, alpha: 1)
+        addSubview(horizontalBarView)
+        
+        horizontalBarLeadingAnchorConstraint = horizontalBarView.leadingAnchor.constraint(equalTo: leadingAnchor)
+        
+        NSLayoutConstraint.activate([
+            horizontalBarView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/4),
+            horizontalBarView.heightAnchor.constraint(equalToConstant: 4),
+            horizontalBarLeadingAnchorConstraint!,
+            horizontalBarView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+    }
 }
 
 extension MenuBar: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let horizontalBarXCoordinate = CGFloat(indexPath.item) * frame.width / 4
+        
+        horizontalBarLeadingAnchorConstraint?.constant = horizontalBarXCoordinate
+        
+        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.layoutIfNeeded()
+        })
+    }
 }
 
 extension MenuBar: UICollectionViewDataSource {

@@ -26,7 +26,8 @@ class HomeController: UICollectionViewController {
         launcher.homeController = self
         return launcher
     }()
-
+    let cellID = "cellID"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,13 +42,7 @@ class HomeController: UICollectionViewController {
         titleLabel.font = .systemFont(ofSize: 20)
         navigationItem.titleView = titleLabel
         
-        collectionView.backgroundColor = .white
-        
-        collectionView.register(VideoCell.self, forCellWithReuseIdentifier: "cellID")
-        
-        collectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
-        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
-        
+        setupCollectionView()
         setupMenuBar()
         setupNavBarButtons()
     }
@@ -66,7 +61,7 @@ class HomeController: UICollectionViewController {
         }
     }
     
-    private func setupMenuBar() {
+    fileprivate func setupMenuBar() {
         navigationController?.hidesBarsOnSwipe = true
         
         let redView = UIView()
@@ -90,13 +85,29 @@ class HomeController: UICollectionViewController {
         ])
     }
     
-    private func setupNavBarButtons() {
+    fileprivate func setupNavBarButtons() {
         let searchImage = UIImage(named: "search_icon")?.withRenderingMode(.alwaysOriginal)
         let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
         
         let moreImage = UIImage(named: "nav_more_icon")?.withRenderingMode(.alwaysOriginal)
         let moreBarButtonItem = UIBarButtonItem(image: moreImage, style: .plain, target: self, action: #selector(handleMore))
         navigationItem.rightBarButtonItems = [moreBarButtonItem, searchBarButtonItem]
+    }
+    
+    fileprivate func setupCollectionView() {
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.scrollDirection = .horizontal
+            flowLayout.minimumLineSpacing = 0
+        }
+        
+        collectionView.backgroundColor = .white
+        
+//        collectionView.register(VideoCell.self, forCellWithReuseIdentifier: "cellID")
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
+        
+        collectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
+        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
+        collectionView.isPagingEnabled = true
     }
     
     @objc func handleSearch() {
@@ -121,28 +132,41 @@ class HomeController: UICollectionViewController {
 // MARK: - UICollectionViewDelegate
 extension HomeController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return videos?.count ?? 0
+        return 4
     }
+    
+//    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return videos?.count ?? 0
+//    }
 }
 
 // MARK: - UICollectionViewDataSource
 extension HomeController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! VideoCell
-        cell.video = videos?[indexPath.row]
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+        let colors: [UIColor] = [.blue, .yellow, .green, .purple]
+        cell.backgroundColor = colors[indexPath.item]
         return cell
     }
+//    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! VideoCell
+//        cell.video = videos?[indexPath.row]
+//
+//        return cell
+//    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension HomeController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = (view.frame.width - 16 - 16) * 9 / 16
-        return CGSize(width: view.frame.width, height: height + 16 + 88)
+        return CGSize(width: view.frame.width, height: view.frame.height)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let height = (view.frame.width - 16 - 16) * 9 / 16
+//        return CGSize(width: view.frame.width, height: height + 16 + 88)
+//    }
+
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 0
+//    }
 }

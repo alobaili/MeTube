@@ -43,7 +43,7 @@ class FeedCell: BaseCell {
         collcetionView.register(VideoCell.self, forCellWithReuseIdentifier: cellID)
     }
     
-    private func fetchVideos() {
+    func fetchVideos() {
         API.shared.fetchVideos { (result) in
             switch result {
             case .success(let videos):

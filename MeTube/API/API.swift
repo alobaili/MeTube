@@ -12,8 +12,22 @@ class API {
     static let shared = API()
     private init() {}
     
+    let baseURL = "https://s3-us-west-2.amazonaws.com/youtubeassets"
+    
     func fetchVideos(completion: @escaping (Result<[Video],Error>) -> Void) {
-        let url = URL(string: "https://s3-us-west-2.amazonaws.com/youtubeassets/home.json")
+        fetchFeedFor(urlString: "\(baseURL)/home.json", completion: completion)
+    }
+    
+    func fetchTrendingFeed(completion: @escaping (Result<[Video],Error>) -> Void) {
+        fetchFeedFor(urlString: "\(baseURL)/trending.json", completion: completion)
+    }
+    
+    func fetchSubscriptionsFeed(completion: @escaping (Result<[Video],Error>) -> Void) {
+        fetchFeedFor(urlString: "\(baseURL)/subscriptions.json", completion: completion)
+    }
+    
+    func fetchFeedFor(urlString: String, completion: @escaping (Result<[Video],Error>) -> Void) {
+        let url = URL(string: urlString)
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
             guard let data = data else {
                 print(error!)

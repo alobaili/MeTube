@@ -27,6 +27,8 @@ class HomeController: UICollectionViewController {
         return launcher
     }()
     let cellID = "cellID"
+    let trendingCellID = "trendingCellID"
+    let subscriptionsCellID = "subscriptionsCellID"
     
     let titles = ["Home", "Trending", "Subscriptions", "Account"]
     
@@ -89,6 +91,8 @@ class HomeController: UICollectionViewController {
         collectionView.backgroundColor = .white
         
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: cellID)
+        collectionView.register(TrendingCell.self, forCellWithReuseIdentifier: trendingCellID)
+        collectionView.register(SubscriptionsCell.self, forCellWithReuseIdentifier: subscriptionsCellID)
         
         collectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
         collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
@@ -139,7 +143,18 @@ extension HomeController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+        
+        let identifier: String
+        
+        if indexPath.item == 1 {
+            identifier = trendingCellID
+        } else if indexPath.item == 2 {
+            identifier = subscriptionsCellID
+        } else {
+            identifier = cellID
+        }
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
         
         return cell
     }

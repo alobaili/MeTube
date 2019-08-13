@@ -20,7 +20,7 @@ class VideoCell: BaseCell {
             if let channelName = video?.channel?.name, let numberOfViews = video?.number_of_views {
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
-                let subtitleText = "\(channelName) • \(numberFormatter.string(from: NSNumber(value: numberOfViews))!)!) • 2 years ago"
+                let subtitleText = "\(channelName) • \(numberFormatter.string(from: NSNumber(value: numberOfViews))!) • 2 years ago"
                 subtitleTextView.text = subtitleText
             }
             

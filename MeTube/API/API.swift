@@ -42,6 +42,6 @@ class API {
                 completion(.failure(error))
             }
             
-            }.resume()
+        }.resume()
     }
 }

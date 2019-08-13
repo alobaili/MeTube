@@ -14,8 +14,9 @@ class HomeController: UICollectionViewController {
         return .lightContent
     }
     
-    let menuBar: MenuBar = {
+    lazy var menuBar: MenuBar = {
         let mb = MenuBar()
+        mb.homeController = self
         mb.translatesAutoresizingMaskIntoConstraints = false
         return mb
     }()
@@ -111,11 +112,16 @@ class HomeController: UICollectionViewController {
     }
     
     @objc func handleSearch() {
-        
+        scrollTo(menuIndex: 2)
     }
     
     @objc func handleMore() {
         settingsLauncher.showSettings()
+    }
+    
+    func scrollTo(menuIndex: Int) {
+        let menuIndex = IndexPath(item: menuIndex, section: 0)
+        collectionView.scrollToItem(at: menuIndex, at: [], animated: true)
     }
     
     func showController(for setting: Setting) {
@@ -175,5 +181,14 @@ extension HomeController: UICollectionViewDelegateFlowLayout {
 extension HomeController {
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         menuBar.horizontalBarLeadingAnchorConstraint?.constant = scrollView.contentOffset.x / 4
+    }
+    
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        // get the target index of the call in which the scroll will end
+        let index = Int(targetContentOffset.pointee.x / view.frame.width)
+        
+        let indexPath = IndexPath(item: index, section: 0)
+        
+        menuBar.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
     }
 }

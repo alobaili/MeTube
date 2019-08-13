@@ -24,6 +24,8 @@ class MenuBar: UIView {
     
     var horizontalBarLeadingAnchorConstraint: NSLayoutConstraint?
     
+    var homeController: HomeController?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -66,13 +68,7 @@ class MenuBar: UIView {
 
 extension MenuBar: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let horizontalBarXCoordinate = CGFloat(indexPath.item) * frame.width / 4
-        
-        horizontalBarLeadingAnchorConstraint?.constant = horizontalBarXCoordinate
-        
-        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.layoutIfNeeded()
-        })
+        homeController?.scrollTo(menuIndex: indexPath.item)
     }
 }
 

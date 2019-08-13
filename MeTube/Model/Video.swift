@@ -9,9 +9,10 @@
 import Foundation
 
 struct Video: Codable {
-    var thumbnailImageName: String?
+    var thumbnail_image_name: String?
     var title: String?
-    var numberOfViews: Int?
+    var number_of_views: Int?
     var uploadDate: Date?
     var channel: Channel?
+    var duration: Int?
 }

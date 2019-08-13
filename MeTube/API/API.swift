@@ -34,27 +34,9 @@ class API {
                 return
             }
             do {
-                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [[String : Any]]
+                let json = try JSONDecoder().decode([Video].self, from: data)
                 
-                var videos = [Video]()
-                
-                json.forEach({ (dictionary) in
-                    var video = Video()
-                    video.title = dictionary["title"] as? String
-                    video.thumbnailImageName = dictionary["thumbnail_image_name"] as? String
-                    video.numberOfViews = dictionary["number_of_views"] as? Int
-                    
-                    let channelDictionary = dictionary["channel"] as! [String : Any]
-                    
-                    var channel = Channel()
-                    channel.name = channelDictionary["name"] as? String
-                    channel.profileImageName = channelDictionary["profile_image_name"] as? String
-                    video.channel = channel
-                    
-                    videos.append(video)
-                })
-                
-                completion(.success(videos))
+                completion(.success(json))
                 
             } catch {
                 completion(.failure(error))

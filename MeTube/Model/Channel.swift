@@ -10,5 +10,5 @@ import Foundation
 
 struct Channel: Codable {
     var name: String?
-    var profileImageName: String?
+    var profile_image_name: String?
 }

@@ -17,10 +17,10 @@ class VideoCell: BaseCell {
             
             setubProfileOmage()
             
-            if let channelName = video?.channel?.name, let numberOfViews = video?.numberOfViews {
+            if let channelName = video?.channel?.name, let numberOfViews = video?.number_of_views {
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
-                let subtitleText = "\(channelName) • \(numberFormatter.string(from: NSNumber(value: numberOfViews))!) • 2 years ago"
+                let subtitleText = "\(channelName) • \(numberFormatter.string(from: NSNumber(value: numberOfViews))!)!) • 2 years ago"
                 subtitleTextView.text = subtitleText
             }
             
@@ -127,13 +127,13 @@ class VideoCell: BaseCell {
     }
     
     func setupThumbnailImage() {
-        if let thumbnailImageURL = video?.thumbnailImageName {
+        if let thumbnailImageURL = video?.thumbnail_image_name {
             thumbnailImageView.loadImageUsingURLString(urlString: thumbnailImageURL)
         }
     }
     
     func setubProfileOmage() {
-        if let profileImageURL = video?.channel?.profileImageName {
+        if let profileImageURL = video?.channel?.profile_image_name {
             userProfileImageView.loadImageUsingURLString(urlString: profileImageURL)
         }
     }

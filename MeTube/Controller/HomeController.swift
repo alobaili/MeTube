@@ -170,3 +170,10 @@ extension HomeController: UICollectionViewDelegateFlowLayout {
 //        return 0
 //    }
 }
+
+// MARK: - UIScrollViewDelegate
+extension HomeController {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        menuBar.horizontalBarLeadingAnchorConstraint?.constant = scrollView.contentOffset.x / 4
+    }
+}

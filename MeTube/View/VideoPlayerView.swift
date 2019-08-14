@@ -35,6 +35,20 @@ class VideoPlayerView: UIView {
         return button
     }()
     
+    lazy var videoLengthLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "00:00"
+        label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        if UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .rightToLeft {
+            label.textAlignment = .left
+        } else {
+            label.textAlignment = .right
+        }
+        return label
+    }()
+    
     var player: AVPlayer?
     var isPlaying = false
 
@@ -58,6 +72,15 @@ class VideoPlayerView: UIView {
             pauseAndPlayButton.widthAnchor.constraint(equalToConstant: 50),
             pauseAndPlayButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+        
+        controlsContainerView.addSubview(videoLengthLabel)
+        NSLayoutConstraint.activate([
+            videoLengthLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            videoLengthLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            videoLengthLabel.widthAnchor.constraint(equalToConstant: 60),
+            videoLengthLabel.heightAnchor.constraint(equalToConstant: 24)
+        ])
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

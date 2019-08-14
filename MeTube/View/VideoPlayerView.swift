@@ -40,11 +40,25 @@ class VideoPlayerView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "00:00"
         label.textColor = .white
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.font = UIFont.boldSystemFont(ofSize: 13)
         if UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .rightToLeft {
             label.textAlignment = .left
         } else {
             label.textAlignment = .right
+        }
+        return label
+    }()
+    
+    lazy var videoCurrentTimeLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "00:00"
+        label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 13)
+        if UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .rightToLeft {
+            label.textAlignment = .right
+        } else {
+            label.textAlignment = .left
         }
         return label
     }()
@@ -86,16 +100,25 @@ class VideoPlayerView: UIView {
         controlsContainerView.addSubview(videoLengthLabel)
         NSLayoutConstraint.activate([
             videoLengthLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-            videoLengthLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-            videoLengthLabel.widthAnchor.constraint(equalToConstant: 60),
+            videoLengthLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -2),
+            videoLengthLabel.widthAnchor.constraint(equalToConstant: 50),
             videoLengthLabel.heightAnchor.constraint(equalToConstant: 24)
+        ])
+        
+        controlsContainerView.addSubview(videoCurrentTimeLabel)
+        NSLayoutConstraint.activate([
+            videoCurrentTimeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            videoCurrentTimeLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -2),
+            videoCurrentTimeLabel.widthAnchor.constraint(equalToConstant: 50),
+            videoCurrentTimeLabel.heightAnchor.constraint(equalToConstant: 24)
+            
         ])
         
         controlsContainerView.addSubview(videoSlider)
         NSLayoutConstraint.activate([
             videoSlider.trailingAnchor.constraint(equalTo: videoLengthLabel.leadingAnchor),
             videoSlider.bottomAnchor.constraint(equalTo: bottomAnchor),
-            videoSlider.leadingAnchor.constraint(equalTo: leadingAnchor),
+            videoSlider.leadingAnchor.constraint(equalTo: videoCurrentTimeLabel.trailingAnchor),
             videoSlider.heightAnchor.constraint(equalToConstant: 30)
         ])
         

@@ -49,6 +49,16 @@ class VideoPlayerView: UIView {
         return label
     }()
     
+    let videoSlider: UISlider = {
+        let slider = UISlider()
+        slider.translatesAutoresizingMaskIntoConstraints = false
+        slider.minimumTrackTintColor = UIColor(red: 230/255, green: 32/255, blue: 31/255, alpha: 1)
+        slider.maximumTrackTintColor = .white
+        slider.setThumbImage(UIImage(named: "slider_thumb_image"), for: .normal)
+        slider.addTarget(self, action: #selector(handleSliderChange), for: .valueChanged)
+        return slider
+    }()
+    
     var player: AVPlayer?
     var isPlaying = false
 
@@ -81,6 +91,14 @@ class VideoPlayerView: UIView {
             videoLengthLabel.heightAnchor.constraint(equalToConstant: 24)
         ])
         
+        controlsContainerView.addSubview(videoSlider)
+        NSLayoutConstraint.activate([
+            videoSlider.trailingAnchor.constraint(equalTo: videoLengthLabel.leadingAnchor),
+            videoSlider.bottomAnchor.constraint(equalTo: bottomAnchor),
+            videoSlider.leadingAnchor.constraint(equalTo: leadingAnchor),
+            videoSlider.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -94,6 +112,15 @@ class VideoPlayerView: UIView {
                 controlsContainerView.backgroundColor = .clear
                 pauseAndPlayButton.isHidden = false
                 isPlaying = true
+            }
+        }
+        
+        if keyPath == "currentItem.loadedTimeRanges" {
+            if let duration = player?.currentItem?.duration {
+                let seconds = CMTimeGetSeconds(duration)
+                let secondsText = Int(seconds.truncatingRemainder(dividingBy: 60))
+                let minutsText = String(format: "%02d", Int(seconds / 60))
+                videoLengthLabel.text = "\(minutsText):\(secondsText)"
             }
         }
     }
@@ -110,6 +137,8 @@ class VideoPlayerView: UIView {
             
             // observe when the player is ready (frames are being rendered)
             player?.addObserver(self, forKeyPath: "status", options: .new, context: nil)
+            
+            player?.addObserver(self, forKeyPath: "currentItem.loadedTimeRanges", options: .new, context: nil)
         }
     }
     
@@ -122,6 +151,17 @@ class VideoPlayerView: UIView {
             pauseAndPlayButton.setImage(UIImage(named: "pause"), for: .normal)
         }
         isPlaying = !isPlaying
+    }
+    
+    @objc func handleSliderChange() {
+        if let duration = player?.currentItem?.duration {
+            let totalSeconds = CMTimeGetSeconds(duration)
+            let value = Float64(videoSlider.value) * totalSeconds
+            let seekTime = CMTime(value: Int64(value), timescale: 1)
+            player?.seek(to: seekTime, completionHandler: { (didFinishSeek) in
+                // Maybe do something here later...
+            })
+        }
     }
     
 }

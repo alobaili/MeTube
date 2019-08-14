@@ -162,7 +162,19 @@ class VideoPlayerView: UIView {
             // observe when the player is ready (frames are being rendered)
             player?.addObserver(self, forKeyPath: "status", options: .new, context: nil)
             
+            // observe when the duration of a video is loaded
             player?.addObserver(self, forKeyPath: "currentItem.loadedTimeRanges", options: .new, context: nil)
+            
+            // get an interval of 1 second
+            let interval = CMTime(value: 1, timescale: 1)
+            
+            // observe player progress every 1 second
+            player?.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main, using: { (progressTime) in
+                let seconds = CMTimeGetSeconds(progressTime)
+                let secondsString = String(format: "%02d", Int(seconds.truncatingRemainder(dividingBy: 60)))
+                let minutesString = String(format: "%02d", Int(seconds / 60))
+                self.videoCurrentTimeLabel.text = "\(minutesString):\(secondsString)"
+            })
         }
     }
     

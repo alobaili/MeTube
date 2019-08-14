@@ -79,6 +79,7 @@ class VideoPlayerView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupPlayerView()
+        setupGradientLayer()
         
         controlsContainerView.frame = frame
         addSubview(controlsContainerView)
@@ -163,6 +164,16 @@ class VideoPlayerView: UIView {
             
             player?.addObserver(self, forKeyPath: "currentItem.loadedTimeRanges", options: .new, context: nil)
         }
+    }
+    
+    fileprivate func setupGradientLayer() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = bounds
+        
+        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradientLayer.locations = [0.7, 1.2]
+        
+        controlsContainerView.layer.addSublayer(gradientLayer)
     }
     
     @objc func togglePauseAndPlay() {

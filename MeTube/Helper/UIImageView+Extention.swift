@@ -8,7 +8,7 @@
 
 import UIKit
 
-let imageCache = NSCache<AnyObject, AnyObject>()
+let imageCache = NSCache<NSString, UIImage>()
 
 class CustomImageView: UIImageView {
     var imageURLString: String?
@@ -22,7 +22,7 @@ class CustomImageView: UIImageView {
         
         let url = URL(string: urlString)
         
-        if let imageFromCache = imageCache.object(forKey: urlString as AnyObject) as? UIImage {
+        if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
             image = imageFromCache
             return
         }
@@ -39,7 +39,7 @@ class CustomImageView: UIImageView {
                     self.image = imageToCache
                 }
                 
-                imageCache.setObject(imageToCache!, forKey: urlString as AnyObject)
+                imageCache.setObject(imageToCache!, forKey: urlString as NSString)
             }
         }.resume()
     }

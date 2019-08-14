@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// The collection view for this controller has only 4 items representing the 4 menu options.
 class HomeController: UICollectionViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -164,6 +165,7 @@ extension HomeController {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension HomeController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        #warning("The height should be dynamic depending on whether the navigation bar is hidden or not.")
         return CGSize(width: view.frame.width, height: view.frame.height - 50)
     }
 }

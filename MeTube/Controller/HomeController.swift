@@ -50,7 +50,7 @@ class HomeController: UICollectionViewController {
     }
     
     fileprivate func setupMenuBar() {
-        navigationController?.hidesBarsOnSwipe = true
+//        navigationController?.hidesBarsOnSwipe = true
         
         let redView = UIView()
         redView.translatesAutoresizingMaskIntoConstraints = false
@@ -154,7 +154,8 @@ extension HomeController {
             identifier = cellID
         }
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! FeedCell
+        cell.homeControllerNavigationController = navigationController
         
         return cell
     }

@@ -10,6 +10,8 @@ import UIKit
 
 class FeedCell: BaseCell {
     
+    var homeControllerNavigationController: UINavigationController?
+    
     lazy var collcetionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -90,5 +92,18 @@ extension FeedCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+extension FeedCell {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // When the scroll view's y position is greater than 0 it means we are scrolling down, so hide the navigation bar
+        if scrollView.contentOffset.y > 0 {
+            homeControllerNavigationController?.setNavigationBarHidden(true, animated: true)
+        } else {
+            // When the scroll views's y position is less than or equal to 0, it means we are at the top of the feed, so show the navigation bar
+            homeControllerNavigationController?.setNavigationBarHidden(false, animated: true)
+        }
     }
 }
